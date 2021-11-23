@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "pantalon",
+    "price": "13000",
+    "thumbnail": "http://localhost:8080/images/1637626502769.jpeg"
+  },
+  {
+    "id": 2,
+    "title": "pantalon",
+    "price": 15000,
+    "thumbnail": "http://localhost:8080/images/1637555717008.jpeg"
+  },
+  {
+    "id": 3,
+    "title": "remera",
+    "price": 5000,
+    "thumbnail": "http://localhost:8080/images/1637555805793.jpeg"
+  },
+  {
+    "id": 4,
+    "title": "gorra",
+    "price": 5000,
+    "thumbnail": "http://localhost:8080/images/1637640180067.jpeg"
+  },
+  {
+    "id": 5,
+    "title": "as",
+    "price": 40040,
+    "thumbnail": "http://localhost:8080/images/1637640242282.jpeg"
+  },
+  {
+    "id": 6,
+    "title": "asd",
+    "price": 2222,
+    "thumbnail": "http://localhost:8080/images/1637640304403.jpeg"
+  }
+]
