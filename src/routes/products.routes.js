@@ -1,9 +1,9 @@
-const express = require("express");
-const router = express.Router();
-const ProductsContainer = require("../classes/ProductsContainer");
-const contenedor = new ProductsContainer();
-const upload = require("../services/upload");
+import express from "express";
+import ProductsContainer from "../classes/ProductsContainer.js";
+import upload from "../services/upload.js";
 
+const router = express.Router();
+const contenedor = new ProductsContainer();
 //GETS
 router.get("/", (req, res) => {
   contenedor.getAll().then((result) => {
@@ -47,4 +47,4 @@ router.delete("/:pid", (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

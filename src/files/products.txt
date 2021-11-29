@@ -34,5 +34,11 @@
     "title": "asd",
     "price": 2222,
     "thumbnail": "http://localhost:8080/images/1637640304403.jpeg"
+  },
+  {
+    "id": 7,
+    "title": "zapatillas",
+    "price": 20000,
+    "thumbnail": "http://localhost:8080/images/1637709209111.jpeg"
   }
 ]
