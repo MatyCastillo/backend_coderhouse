@@ -1,10 +1,12 @@
 import fs from "fs";
+import __dirname from "../utils.js";
 
+const productsURL = __dirname + "/files/products.txt";
 class ProductContainer {
   async save(product) {
     let idAsignado = 0;
     try {
-      let data = await fs.promises.readFile("./files/products.txt", "utf-8");
+      let data = await fs.promises.readFile(productsURL, "utf-8");
       let products = JSON.parse(data);
       if (
         products.some(
@@ -22,7 +24,7 @@ class ProductContainer {
         products.push(producto);
         try {
           await fs.promises.writeFile(
-            "./files/products.txt",
+            productsURL,
             JSON.stringify(products, null, 2)
           );
           idAsignado = producto.id;
@@ -48,7 +50,7 @@ class ProductContainer {
       ];
       try {
         await fs.promises.writeFile(
-          "./files/products.txt",
+          productsURL,
           JSON.stringify(producto, null, 2)
         );
         return {
@@ -56,6 +58,7 @@ class ProductContainer {
           message: "Producto añadido exitosamente. ID: 1",
         };
       } catch (error) {
+        console.log(error);
         return {
           status: "error",
           message: "Error al intentar añadir el producto:" + error,
@@ -65,7 +68,7 @@ class ProductContainer {
   }
   async update(id, body) {
     try {
-      let data = await fs.promises.readFile("./files/products.txt", "utf-8");
+      let data = await fs.promises.readFile(productsURL, "utf-8");
       let products = JSON.parse(data);
       if (!products.some((pr) => pr.id === id))
         return {
@@ -83,7 +86,7 @@ class ProductContainer {
       });
       try {
         await fs.promises.writeFile(
-          "./files/products.txt",
+          productsURL,
           JSON.stringify(result, null, 2)
         );
         return { status: "success", message: "Producto actualizado" };
@@ -99,7 +102,7 @@ class ProductContainer {
   }
   async getById(id) {
     try {
-      let data = await fs.promises.readFile("./files/products.txt", "utf-8");
+      let data = await fs.promises.readFile(productsURL, "utf-8");
       let products = JSON.parse(data);
       let product = products.find((prod) => prod.id === id);
       return product
@@ -114,7 +117,7 @@ class ProductContainer {
   }
   async getAll() {
     try {
-      let data = await fs.promises.readFile("./files/products.txt", "utf-8");
+      let data = await fs.promises.readFile(productsURL, "utf-8");
       let products = JSON.parse(data);
       return { status: "success", products: products };
     } catch (error) {
@@ -126,12 +129,12 @@ class ProductContainer {
   }
   async deleteById(id) {
     try {
-      let data = await fs.promises.readFile("./files/products.txt", "utf-8");
+      let data = await fs.promises.readFile(productsURL, "utf-8");
       let products = JSON.parse(data);
       let productsAux = products.filter((prod) => prod.id !== id);
       try {
         await fs.promises.writeFile(
-          "./files/products.txt",
+          productsURL,
           JSON.stringify(productsAux, null, 2)
         );
         return {
@@ -152,7 +155,7 @@ class ProductContainer {
     }
   }
   async deleteAll() {
-    await fs.promises.writeFile("./files/products.txt", JSON.stringify([]));
+    await fs.promises.writeFile(productsURL, JSON.stringify([]));
   }
 }
 

@@ -1,7 +1,7 @@
 import express from "express";
 import ProductsContainer from "../classes/ProductsContainer.js";
 import upload from "../services/upload.js";
-
+import { io } from "../app.js";
 const router = express.Router();
 const contenedor = new ProductsContainer();
 //GETS
@@ -26,6 +26,11 @@ router.post("/", upload.single("image"), (req, res) => {
     req.protocol + "://" + req.hostname + ":8080" + "/images/" + file.filename;
   contenedor.save(product).then((result) => {
     res.send(result);
+    if (result.status === "success") {
+      contenedor.getAll().then((result) => {
+        io.emit("updateProducts", result);
+      });
+    }
   });
 });
 //PUT

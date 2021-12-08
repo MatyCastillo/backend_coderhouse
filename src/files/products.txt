@@ -40,5 +40,23 @@
     "title": "zapatillas",
     "price": 20000,
     "thumbnail": "http://localhost:8080/images/1637709209111.jpeg"
+  },
+  {
+    "id": 8,
+    "title": "12",
+    "price": 12,
+    "thumbnail": "http://localhost:8080/images/1638764978910.jpeg"
+  },
+  {
+    "id": 9,
+    "title": "aaaaaaaaaaaaaaaaaaaaaaaa",
+    "price": 121,
+    "thumbnail": "http://localhost:8080/images/1638849182521.jpeg"
+  },
+  {
+    "id": 10,
+    "title": "buzo",
+    "price": 8000,
+    "thumbnail": "http://localhost:8080/images/1638849472892.jpeg"
   }
 ]
