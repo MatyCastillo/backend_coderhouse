@@ -64,10 +64,3 @@ io.on("connection", async (socket) => {
     });
   });
 });
-
-app.get("*", function (req, res) {
-  res.send({
-    error: "not_implemented",
-    description: `Ruta ${req.url} método ${req.method} no implementada`,
-  });
-});

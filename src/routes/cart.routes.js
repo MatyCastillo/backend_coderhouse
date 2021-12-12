@@ -21,8 +21,8 @@ router.post("/:cartid/productos", (req, res) => {
   });
 });
 //GETS
-router.get("/:pid", (req, res) => {
-  let id = parseInt(req.params.pid);
+router.get("/:id/productos", (req, res) => {
+  let id = parseInt(req.params.id);
   cartContainer.getProductsInCartById(id).then((result) => {
     res.send(result.products);
   });
