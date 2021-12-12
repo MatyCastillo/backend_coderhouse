@@ -21,7 +21,7 @@ function enviarFormulario(event) {
   event.preventDefault();
   let form = document.getElementById("productForm");
   let data = new FormData(form);
-  fetch("/api/products", {
+  fetch("/api/productos", {
     method: "POST",
     body: data,
   })

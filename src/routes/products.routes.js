@@ -2,6 +2,7 @@ import express from "express";
 import ProductsContainer from "../classes/ProductsContainer.js";
 import upload from "../services/upload.js";
 import { io } from "../app.js";
+import { authMiddleware } from "../utils.js";
 const router = express.Router();
 const contenedor = new ProductsContainer();
 //GETS
@@ -18,11 +19,14 @@ router.get("/:pid", (req, res) => {
   });
 });
 //POST
-router.post("/", upload.single("image"), (req, res) => {
+router.post("/", upload.single("foto"), authMiddleware, (req, res) => {
   let file = req.file;
   let product = req.body;
-  product.price = parseInt(product.price);
-  product.thumbnail =
+  product.precio = parseInt(product.precio);
+  product.timestamp = Date.now();
+  product.stock = parseInt(product.stock);
+  product.codigo = parseInt(product.codigo);
+  product.foto =
     req.protocol + "://" + req.hostname + ":8080" + "/images/" + file.filename;
   contenedor.save(product).then((result) => {
     res.send(result);
@@ -34,7 +38,7 @@ router.post("/", upload.single("image"), (req, res) => {
   });
 });
 //PUT
-router.put("/:pid", upload.single("image"), (req, res) => {
+router.put("/:pid", upload.single("image"), authMiddleware, (req, res) => {
   let file = req.file;
   let product = req.body;
   let id = parseInt(req.params.pid);
@@ -45,7 +49,7 @@ router.put("/:pid", upload.single("image"), (req, res) => {
   });
 });
 //DELETE
-router.delete("/:pid", (req, res) => {
+router.delete("/:pid", authMiddleware, (req, res) => {
   let id = parseInt(req.params.pid);
   contenedor.deleteById(id).then((result) => {
     res.send(result);

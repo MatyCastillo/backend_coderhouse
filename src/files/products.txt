@@ -1,62 +1,56 @@
 [
   {
     "id": 1,
-    "title": "pantalon",
-    "price": "13000",
-    "thumbnail": "http://localhost:8080/images/1637626502769.jpeg"
+    "timestamp": 1639283328287,
+    "nombre": "Buzo",
+    "descripcion": "Buzo Blanco de Algodon",
+    "codigo": 111,
+    "foto": "http://localhost:8080/images/1639283328278.jpeg",
+    "stock": 6
   },
   {
     "id": 2,
-    "title": "pantalon",
-    "price": 15000,
-    "thumbnail": "http://localhost:8080/images/1637555717008.jpeg"
+    "timestamp": 1639283372310,
+    "nombre": "Campera",
+    "descripcion": "Campera de cuero Negra",
+    "codigo": 222,
+    "foto": "http://localhost:8080/images/1639283372304.jpeg",
+    "stock": 12
   },
   {
     "id": 3,
-    "title": "remera",
-    "price": 5000,
-    "thumbnail": "http://localhost:8080/images/1637555805793.jpeg"
+    "timestamp": 1639283421331,
+    "nombre": "Zapatillas",
+    "descripcion": "Zapatillas Runing negras",
+    "codigo": 333,
+    "foto": "http://localhost:8080/images/1639283421326.jpeg",
+    "stock": 50
   },
   {
     "id": 4,
-    "title": "gorra",
-    "price": 5000,
-    "thumbnail": "http://localhost:8080/images/1637640180067.jpeg"
+    "timestamp": 1639283457187,
+    "nombre": "Gorra",
+    "descripcion": "Gorra LA Azul",
+    "codigo": 444,
+    "foto": "http://localhost:8080/images/1639283457181.jpeg",
+    "stock": 13
   },
   {
     "id": 5,
-    "title": "as",
-    "price": 40040,
-    "thumbnail": "http://localhost:8080/images/1637640242282.jpeg"
+    "timestamp": 1639283487788,
+    "nombre": "Remera",
+    "descripcion": "Remera Nike Blanca",
+    "codigo": 555,
+    "foto": "http://localhost:8080/images/1639283487741.jpeg",
+    "stock": 5
   },
   {
     "id": 6,
-    "title": "asd",
-    "price": 2222,
-    "thumbnail": "http://localhost:8080/images/1637640304403.jpeg"
-  },
-  {
-    "id": 7,
-    "title": "zapatillas",
-    "price": 20000,
-    "thumbnail": "http://localhost:8080/images/1637709209111.jpeg"
-  },
-  {
-    "id": 8,
-    "title": "12",
-    "price": 12,
-    "thumbnail": "http://localhost:8080/images/1638764978910.jpeg"
-  },
-  {
-    "id": 9,
-    "title": "aaaaaaaaaaaaaaaaaaaaaaaa",
-    "price": 121,
-    "thumbnail": "http://localhost:8080/images/1638849182521.jpeg"
-  },
-  {
-    "id": 10,
-    "title": "buzo",
-    "price": 8000,
-    "thumbnail": "http://localhost:8080/images/1638849472892.jpeg"
+    "timestamp": 1639283534317,
+    "nombre": "Camisa",
+    "descripcion": "Camida Oxford Celeste",
+    "codigo": 666,
+    "foto": "http://localhost:8080/images/1639283534313.jpeg",
+    "stock": 5
   }
 ]

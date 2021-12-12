@@ -1,7 +1,7 @@
 import express from "express";
 import { engine } from "express-handlebars";
 import cors from "cors";
-import upload from "./services/upload.js";
+import cartRouter from "./routes/cart.routes.js";
 import ProductsContainer from "./classes/ProductsContainer.js";
 import productsRouter from "./routes/products.routes.js";
 import Chat from "./classes/chat.js";
@@ -21,11 +21,18 @@ app.engine("handlebars", engine());
 app.set("views", __dirname + "/views");
 app.set("view engine", "handlebars");
 
+const admin = true;
+
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
-app.use("/api/products", productsRouter);
+app.use((req, res, next) => {
+  req.auth = admin;
+  next();
+});
+app.use("/api/productos", productsRouter);
+app.use("/api/carrito", cartRouter);
 
 app.get("/products", (req, res) => {
   container.getAll().then((result) => {
@@ -55,5 +62,12 @@ io.on("connection", async (socket) => {
     chat.getAll().then((res) => {
       io.emit("messagelog", res.messages);
     });
+  });
+});
+
+app.get("*", function (req, res) {
+  res.send({
+    error: "not_implemented",
+    description: `Ruta ${req.url} método ${req.method} no implementada`,
   });
 });

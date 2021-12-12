@@ -8,18 +8,25 @@ class ProductContainer {
     try {
       let data = await fs.promises.readFile(productsURL, "utf-8");
       let products = JSON.parse(data);
+      console.log(products);
       if (
         products.some(
-          (prod) => prod.title.toLowerCase() === product.title.toLowerCase()
+          (prod) =>
+            prod.nombre.toLowerCase() === product.nombre.toLowerCase() ||
+            product.codigo === prod.codigo
         )
       ) {
         return { status: "error", message: "El producto ya existe" };
       } else {
         let producto = {
           id: products[products.length - 1].id + 1,
-          title: product.title,
-          price: product.price,
-          thumbnail: product.thumbnail,
+          timestamp: product.timestamp,
+          nombre: product.nombre,
+          descripcion: product.descripcion,
+          codigo: product.codigo,
+          precio: product.price,
+          foto: product.foto,
+          stock: product.stock,
         };
         products.push(producto);
         try {
@@ -39,13 +46,18 @@ class ProductContainer {
           };
         }
       }
-    } catch {
+    } catch (error) {
+      console.log(error);
       let producto = [
         {
           id: 1,
-          title: product.title,
-          price: product.price,
-          thumbnail: product.thumbnail,
+          timestamp: product.timestamp,
+          nombre: product.nombre,
+          descripcion: product.descripcion,
+          codigo: product.codigo,
+          precio: product.price,
+          foto: product.foto,
+          stock: product.stock,
         },
       ];
       try {
@@ -77,7 +89,7 @@ class ProductContainer {
         };
       let result = products.map((product) => {
         if (product.id === id) {
-          body = Object.assign(body);
+          console.log(body);
           body = Object.assign({ id: id, ...body });
           return body;
         } else {
@@ -112,6 +124,26 @@ class ProductContainer {
       return {
         status: "error",
         message: "Error al buscar el producto: " + error,
+      };
+    }
+  }
+  async getByIds(ids) {
+    try {
+      let data = await fs.promises.readFile(productsURL, "utf-8");
+      let prods = JSON.parse(data);
+      let products = [];
+      ids.forEach((id) => {
+        if (prods.find((element) => element.id == id)) {
+          products.push(prods.find((element) => element.id == id));
+        }
+      });
+      return products.length > 0
+        ? { status: "success", products: products }
+        : { error: "not_found", description: "Productos no encontrado" };
+    } catch (error) {
+      return {
+        status: "error",
+        message: "Error al buscar los productos por ID: " + error,
       };
     }
   }

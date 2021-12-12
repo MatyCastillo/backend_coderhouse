@@ -17,7 +17,7 @@ class Chat {
       await fs.promises.writeFile(chatURL, JSON.stringify(messages, null, 2));
       return {
         status: "success",
-        message: "Producto añadido exitosamente. ID: " + idAsignado,
+        message: "ok",
       };
     } catch (error) {
       return {
@@ -34,7 +34,7 @@ class Chat {
     } catch (error) {
       return {
         status: "error",
-        message: "Error al buscar el producto: " + error,
+        message: "Error: " + error,
       };
     }
   }
