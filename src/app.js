@@ -25,15 +25,15 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
-app.use("/api/products", productsRouter);
+app.use("/api/productos", productsRouter);
 
-app.get("/products", (req, res) => {
+app.get("/productos", (req, res) => {
   container.getAll().then((result) => {
     let info = result.products;
     let prepareObject = {
       products: info,
     };
-    res.render("products", prepareObject);
+    res.render("productos", prepareObject);
   });
 });
 
