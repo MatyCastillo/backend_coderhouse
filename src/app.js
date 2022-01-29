@@ -9,7 +9,7 @@ import __dirname from "./utils.js";
 import { Server } from "socket.io";
 
 const app = express();
-const server = app.listen(8081, () => {
+const server = app.listen(8080, () => {
   console.log("server listening on port 8080");
 });
 const container = new ProductsContainer();

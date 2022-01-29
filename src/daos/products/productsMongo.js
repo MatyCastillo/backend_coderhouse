@@ -1,5 +1,5 @@
 import MongoContainer from "../../containers/MongoContainer.js";
-import { products } from "../index.js";
+//import { products } from "../index.js";
 
 export default class ProductsMongo extends MongoContainer {
   constructor() {
@@ -17,18 +17,21 @@ export default class ProductsMongo extends MongoContainer {
   }
   save = async (product) => {
     try {
-      let arr = (await this.collection.find({ nombre: product.nombre })).length;
+      let arr = (
+        await this.collection.find({
+          $or: [{ nombre: product.nombre }, { codigo: product.codigo }],
+        })
+      ).length;
       if (arr === 0) {
         let result = await this.collection.create(product);
+        return {
+          status: "success",
+          message: "Objeto guardado",
+          payload: result,
+        };
       } else {
         return { status: "error", message: `Nombre o Código ya registrado` };
       }
-
-      return {
-        status: "success",
-        message: "Objeto guardado",
-        payload: result,
-      };
     } catch (error) {
       return { status: "error", message: `error: ${error}` };
     }

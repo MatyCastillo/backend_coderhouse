@@ -23,16 +23,18 @@ export default class MongoContainer {
   };
   getById = async (id) => {
     try {
-      let arr = await (
-        await this.collection.find({ nombre: "Zapatsdillas" })
-      ).length;
-      if (arr === 0) {
-        console.log(arr, "no está");
-      } else {
-        console.log(arr, " está");
-      }
+      let response = await this.collection.find({ _id: id });
+      return { status: "success", payload: response };
     } catch (error) {
-      return { status: "error", message: `error ${error}` };
+      return { status: "error", message: `Objeto no encontrado` };
+    }
+  };
+  deleteById = async (id) => {
+    try {
+      let response = await this.collection.deleteOne({ _id: id });
+      return { status: "success", payload: response };
+    } catch (error) {
+      return { status: "error", message: `Objeto no encontrado` };
     }
   };
 }
