@@ -2,14 +2,14 @@ import express from "express";
 import { engine } from "express-handlebars";
 import cors from "cors";
 import cartRouter from "./routes/cart.routes.js";
-import ProductsContainer from "./classes/ProductsContainer.js";
+import ProductsContainer from "./containers/ProductsContainer.js";
 import productsRouter from "./routes/products.routes.js";
-import Chat from "./classes/chat.js";
+import Chat from "./containers/chat.js";
 import __dirname from "./utils.js";
 import { Server } from "socket.io";
 
 const app = express();
-const server = app.listen(8080, () => {
+const server = app.listen(8081, () => {
   console.log("server listening on port 8080");
 });
 const container = new ProductsContainer();

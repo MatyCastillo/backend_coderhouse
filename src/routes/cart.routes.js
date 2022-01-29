@@ -1,9 +1,9 @@
 import express from "express";
-import CartContainer from "../classes/CartContainer.js";
+import CartContainer from "../containers/CartContainer.js";
 import upload from "../services/upload.js";
 import { io } from "../app.js";
 import { authMiddleware } from "../utils.js";
-
+import { carts } from "../daos/index.js";
 const router = express.Router();
 const cartContainer = new CartContainer();
 //POST
@@ -25,6 +25,11 @@ router.get("/:id/productos", (req, res) => {
   let id = parseInt(req.params.id);
   cartContainer.getProductsInCartById(id).then((result) => {
     res.send(result.products);
+  });
+});
+router.get("/", (req, res) => {
+  carts.getAll().then((result) => {
+    res.send(result);
   });
 });
 //DELETE
