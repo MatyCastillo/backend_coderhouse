@@ -5,15 +5,14 @@ const router = express.Router();
 const cartContainer = new CartContainer();
 //POST
 router.post("/", (req, res) => {
-  let newCart = req.body;
-  cartContainer.save(newCart).then((result) => {
+  carts.save().then((result) => {
     res.send(result);
   });
 });
 router.post("/:cartid/productos", (req, res) => {
-  let cartID = parseInt(req.params.cartid);
+  let cartID = req.params.cartid;
   let productsID = req.body.ids;
-  cartContainer.addProducts(cartID, productsID).then((result) => {
+  carts.addProducts(cartID, productsID).then((result) => {
     res.send(result);
   });
 });

@@ -40,12 +40,12 @@ router.post("/", upload.single("foto"), (req, res) => {
 });
 //PUT
 router.put("/:pid", upload.single("image"), (req, res) => {
-  let file = req.file;
+  // let file = req.file;
   let product = req.body;
-  let id = parseInt(req.params.pid);
-  product.thumbnail =
-    req.protocol + "://" + req.hostname + ":8080" + "/images/" + file.filename;
-  contenedor.update(id, product).then((result) => {
+  let id = req.params.pid;
+  // product.thumbnail =
+  //   req.protocol + "://" + req.hostname + ":8080" + "/images/" + file.filename;
+  products.update(id, product).then((result) => {
     res.send(result);
   });
 });
